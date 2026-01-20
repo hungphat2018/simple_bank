@@ -60,9 +60,9 @@ func TestUpdateAccount(t *testing.T) {
 	require.NotEmpty(t, UpdatedAccount)
 
 	require.Equal(t, account.ID, UpdatedAccount.ID)
-	require.Equal(t, arg.Amount, UpdatedAccount.Balance)
+	require.Equal(t, account.Balance+arg.Amount, UpdatedAccount.Balance)
 	require.Equal(t, account.Currency, UpdatedAccount.Currency)
-	require.WithinDuration(t, UpdatedAccount.CreatedAt, UpdatedAccount.CreatedAt, time.Second)
+	require.WithinDuration(t, account.CreatedAt, UpdatedAccount.CreatedAt, time.Second)
 }
 
 func TestDeleteAccount(t *testing.T) {
